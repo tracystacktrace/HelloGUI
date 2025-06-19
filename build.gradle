@@ -24,7 +24,7 @@ test {
 }
 
 jar {
-    from "LICENSE"
+    from "LICENSE_HELLOGUI"
 }
 
 foxloader {
