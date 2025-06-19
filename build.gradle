@@ -33,8 +33,9 @@ foxloader {
     modIcon = "assets/hellogui/icon.png"
     modVersion = project.version
     modAuthors = "tracystacktrace"
+    modWebsite = "https://github.com/tracystacktrace/HelloGUI"
     //modMain = "net.tracystacktrace.hellogui.ExampleMod"
-    modDesc("Library for generating dynamic configuration GUIs")
+    modDesc("\u00A75Library made to generate dynamic GUIs")
     modDesc()
-    //modDesc("You can check it's code at https://github.com/Fox2Code/FoxLoaderExampleMod")
+    modDesc("\u00A76Sources: \u00A79https://github.com/tracystacktrace/HelloGUI")
 }
