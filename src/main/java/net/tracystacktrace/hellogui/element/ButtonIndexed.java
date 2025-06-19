@@ -2,12 +2,12 @@ package net.tracystacktrace.hellogui.element;
 
 import net.minecraft.client.gui.GuiButton;
 
-public class ButtonChoice extends GuiButton {
+public class ButtonIndexed extends GuiButton {
 
     protected final String[] options;
     protected int index;
 
-    public ButtonChoice(int _id, int x, int y, int w, int h, String[] options) {
+    public ButtonIndexed(int _id, int x, int y, int w, int h, String[] options) {
         super(_id, x, y, w, h, "");
         this.options = options;
 
@@ -15,7 +15,7 @@ public class ButtonChoice extends GuiButton {
         this.index = 0;
     }
 
-    public ButtonChoice(int _id, int x, int y, String[] options) {
+    public ButtonIndexed(int _id, int x, int y, String[] options) {
         this(_id, x, y, 200, 20, options);
     }
 

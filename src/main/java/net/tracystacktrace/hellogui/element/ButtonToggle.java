@@ -39,9 +39,9 @@ public class ButtonToggle extends GuiButton {
         );
     }
 
-    public void toggleValue(boolean b) {
-        this.value = b;
-        this.displayString = b ? this.labelOn : this.labelOff;
+    public void toggleValue(boolean value) {
+        this.value = value;
+        this.displayString = value ? this.labelOn : this.labelOff;
     }
 
     public void toggleValue() {

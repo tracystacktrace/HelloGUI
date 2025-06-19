@@ -32,7 +32,7 @@ public class SliderCompact extends GuiSlider {
         if (this.visible && this.dragging) {
             this.displayString = String.format(this.prebakedString, this.sliderValue);
 
-            if(this.triggerUpdate != null) {
+            if (this.triggerUpdate != null) {
                 this.triggerUpdate.onSliderChanged(this.id);
             }
         }

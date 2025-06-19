@@ -78,7 +78,7 @@ public class GuiInputString extends GuiScreen {
         }
 
         if (this.inputTextField.isFocused) {
-            if (checkInput == null || checkInput.checkKey(eventChar, eventKey)) {
+            if (checkInput == null || checkInput.checkKey(eventChar, eventKey) || eventKey == 14 || eventKey == 203 || eventKey == 205) {
                 this.inputTextField.textboxKeyTyped(eventChar, eventKey);
                 ((GuiButton) this.controlList.get(1)).enabled = this.inputTextField.getText().length() >= this.minLength;
             }

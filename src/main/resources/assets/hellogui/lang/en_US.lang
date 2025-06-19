@@ -1,5 +1,9 @@
-hellogui.on=On
-hellogui.off=Off
+hellogui.on=§aOn
+hellogui.off=§cOff
+
+hellogui.yes=§aYes
+hellogui.no=§cNo
 
 hellogui.done=Save & Close
 hellogui.reset=Reset
+hellogui.cancel=Cancel

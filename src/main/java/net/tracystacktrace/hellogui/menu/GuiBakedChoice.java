@@ -35,7 +35,7 @@ public class GuiBakedChoice extends GuiScreen {
         }
 
         if (this.allowBack) {
-            this.controlList.add(new GuiButton(-1, this.width - 70, 10, 60, 20, StringTranslate.getInstance().translateKey("gui.cancel")));
+            this.controlList.add(new GuiButton(-1, this.width - 70, 10, 60, 20, StringTranslate.getInstance().translateKey("hellogui.cancel")));
         }
     }
 
