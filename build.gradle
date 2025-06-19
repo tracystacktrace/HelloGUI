@@ -1,0 +1,40 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'https://cdn.fox2code.com/maven' }
+    }
+    dependencies {
+        classpath('com.fox2code.FoxLoader:dev:2.0-alpha22')
+    }
+}
+
+apply plugin: 'foxloader.dev'
+
+group = 'net.tracystacktrace'
+version = '0.0.1'
+
+dependencies {
+    api 'org.semver4j:semver4j:5.3.0'
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    from "LICENSE"
+}
+
+foxloader {
+    modId = "hellogui"
+    modName = "Hello GUI"
+    modIcon = "assets/hellogui/icon.png"
+    modVersion = project.version
+    modAuthors = "tracystacktrace"
+    //modMain = "net.tracystacktrace.hellogui.ExampleMod"
+    modDesc("Library for generating dynamic configuration GUIs")
+    modDesc()
+    //modDesc("You can check it's code at https://github.com/Fox2Code/FoxLoaderExampleMod")
+}
