@@ -1,21 +1,60 @@
 package net.tracystacktrace.hellogui;
 
 import net.minecraft.common.util.i18n.StringTranslate;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+/**
+ * A very simple access to {@link StringTranslate}'s functions in a very-very static manner.
+ *
+ * @since 0.1
+ */
 public final class Translation {
 
-    public static String quickTranslate(String input) {
+    /**
+     * A safe wrap for {@link StringTranslate#translateKey(String)}, allows to get a value from ".lang" file
+     *
+     * @param input lang key string
+     * @return translation result from ".lang" file (if exists), or key lang string (if not found)
+     */
+    public static @NotNull String quickTranslate(@Nullable String input) {
         if (input == null || input.isEmpty()) {
             return "";
         }
         return StringTranslate.getInstance().translateKey(input);
     }
 
-    public static String quickTranslate(String input, String first) {
+    /**
+     * A safe wrap for {@link StringTranslate#translateKey(String)}, allows to get a value from ".lang" file and put another string via {@link String#format(String, Object...)}.
+     * <br>
+     * Both strings undergo translations
+     *
+     * @param input  lang key string
+     * @param string another string
+     * @return translation result from ".lang" file (if exists), or key lang string (if not found)
+     */
+    public static @NotNull String quickTranslate(@Nullable String input, @Nullable String string) {
         if (input == null || input.isEmpty()) {
             return "";
         }
-        final String inputTranslation = StringTranslate.getInstance().translateKey(input);
-        return String.format(inputTranslation, StringTranslate.getInstance().translateKey(first));
+        return String.format(
+                StringTranslate.getInstance().translateKey(input),
+                StringTranslate.getInstance().translateKey(string)
+        );
     }
+
+    /**
+     * A safe wrap for {@link StringTranslate#translateKey(String)}, allows to get a value from ".lang" file and put another string via {@link String#format(String, Object...)}.
+     *
+     * @param input lang key string
+     * @param first another value
+     * @return translation result from ".lang" file (if exists), or key lang string (if not found)
+     */
+    public static @NotNull String quickTranslate(@Nullable String input, int first) {
+        if (input == null || input.isEmpty()) {
+            return "";
+        }
+        return String.format(StringTranslate.getInstance().translateKey(input), first);
+    }
+
 }
