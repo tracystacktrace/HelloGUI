@@ -4,6 +4,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.common.util.i18n.StringTranslate;
+import net.tracystacktrace.hellogui.NumberFeatures;
 import net.tracystacktrace.hellogui.func.KeyPredicate;
 import net.tracystacktrace.hellogui.func.TextInputResponse;
 
@@ -78,7 +79,7 @@ public class GuiInputString extends GuiScreen {
         }
 
         if (this.inputTextField.isFocused) {
-            if (checkInput == null || checkInput.checkKey(eventChar, eventKey) || eventKey == 14 || eventKey == 203 || eventKey == 205) {
+            if (checkInput == null || checkInput.check(eventChar, eventKey) || NumberFeatures.isValidTextManipulationKey(eventKey)) {
                 this.inputTextField.textboxKeyTyped(eventChar, eventKey);
                 ((GuiButton) this.controlList.get(1)).enabled = this.inputTextField.getText().length() >= this.minLength;
             }

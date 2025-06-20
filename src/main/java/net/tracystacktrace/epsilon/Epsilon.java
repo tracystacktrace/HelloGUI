@@ -1,9 +1,15 @@
 package net.tracystacktrace.epsilon;
 
+import net.minecraft.client.gui.GuiScreen;
+import net.tracystacktrace.epsilon.gui.GuiEpsilonConfig;
+import net.tracystacktrace.epsilon.gui.InteractiveStringEntry;
+import org.jetbrains.annotations.Nullable;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.lang.reflect.Field;
 
 /**
  * Advanced decoration based API for creating automated config GUIs
@@ -16,6 +22,8 @@ public final class Epsilon {
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.FIELD)
     public @interface StringElement {
+        String groupID();
+
         EnumStringType type() default EnumStringType.DEFAULT;
 
         String title();
@@ -26,6 +34,8 @@ public final class Epsilon {
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.FIELD)
     public @interface ToggleElement {
+        String groupID();
+
         EnumToggleType type() default EnumToggleType.ENABLE_DISABLE;
 
         String title();
@@ -34,6 +44,8 @@ public final class Epsilon {
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.FIELD)
     public @interface ColorElement {
+        String groupID();
+
         EnumColorType type() default EnumColorType.ARGB;
 
         String title();
@@ -44,6 +56,8 @@ public final class Epsilon {
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.FIELD)
     public @interface ChoiceElement {
+        String groupID();
+
         String title();
 
         String[] options();
@@ -52,8 +66,39 @@ public final class Epsilon {
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.FIELD)
     public @interface SliderElement {
+        String groupID();
+
         EnumSliderType type() default EnumSliderType.STANDARD;
 
         String title();
+    }
+
+    /* inner + cougar generate code */
+
+    public static @Nullable GuiScreen generateConfigScreen(
+            @Nullable Object object,
+            @Nullable String id
+    ) {
+        if(object == null || id == null || id.isEmpty()) {
+            return null;
+        }
+
+        final GuiEpsilonConfig configMenu = new GuiEpsilonConfig();
+        final Field[] fields = object.getClass().getDeclaredFields();
+
+        for(int i = 0; i < fields.length; i++) {
+            final Field field = fields[i];
+
+            if(field.isAnnotationPresent(StringElement.class)) {
+                StringElement element = field.getAnnotation(StringElement.class);
+                if(!id.equals(element.groupID())) {
+                    continue;
+                }
+                configMenu.add(new InteractiveStringEntry(i, field, object, element));
+            }
+
+        }
+
+        return configMenu;
     }
 }
