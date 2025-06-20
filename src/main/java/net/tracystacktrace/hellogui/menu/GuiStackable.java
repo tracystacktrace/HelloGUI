@@ -119,7 +119,7 @@ public class GuiStackable extends GuiScreen {
         final int offsetX = this.width / 2 - this.layoutStyle.default_button_width / 2;
         final int offsetY = this.height / 2 - getButtonHeight(maxLayers) / 2;
 
-        for(int i = 0; i < (this.maxLayers - 1); i++) {
+        for (int i = 0; i < (this.maxLayers - 1); i++) {
             this.layoutProvider.process(this, i, offsetX, offsetY);
         }
     }
@@ -135,7 +135,7 @@ public class GuiStackable extends GuiScreen {
 
         final int offsetY = this.height / 2 - getButtonHeight(maxLayers) / 2;
 
-        for(int i = 0; i < title.length; i++) {
+        for (int i = 0; i < title.length; i++) {
             this.drawCenteredString(fontRenderer, title[i], this.width / 2, offsetY + (12 * i), 0xFFFFFFFF);
         }
 

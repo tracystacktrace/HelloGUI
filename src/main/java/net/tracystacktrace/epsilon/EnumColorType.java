@@ -15,7 +15,8 @@ public enum EnumColorType {
 
     public int pack(int[] colors) {
         return switch (this) {
-            case ARGB -> (((colors[0] << 24) & 0xFF) | ((colors[1] << 16) & 0xFF) | ((colors[2] << 8) & 0xFF) | (colors[3] & 0xFF));
+            case ARGB ->
+                    (((colors[0] << 24) & 0xFF) | ((colors[1] << 16) & 0xFF) | ((colors[2] << 8) & 0xFF) | (colors[3] & 0xFF));
             case RGB -> (((colors[0] << 16) & 0xFF) | ((colors[1] << 8) & 0xFF) | (colors[2] & 0xFF));
             case GRAYSCALE -> (colors[0] & 0xFF);
         };

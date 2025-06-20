@@ -3,6 +3,7 @@ package net.tracystacktrace.epsilon;
 import net.minecraft.client.gui.GuiScreen;
 import net.tracystacktrace.epsilon.gui.GuiEpsilonConfig;
 import net.tracystacktrace.epsilon.gui.InteractiveStringEntry;
+import net.tracystacktrace.epsilon.gui.InteractiveToggleEntry;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.annotation.ElementType;
@@ -79,22 +80,32 @@ public final class Epsilon {
             @Nullable Object object,
             @Nullable String id
     ) {
-        if(object == null || id == null || id.isEmpty()) {
+        if (object == null || id == null || id.isEmpty()) {
             return null;
         }
 
         final GuiEpsilonConfig configMenu = new GuiEpsilonConfig();
         final Field[] fields = object.getClass().getDeclaredFields();
 
-        for(int i = 0; i < fields.length; i++) {
+        for (int i = 0; i < fields.length; i++) {
             final Field field = fields[i];
 
-            if(field.isAnnotationPresent(StringElement.class)) {
-                StringElement element = field.getAnnotation(StringElement.class);
-                if(!id.equals(element.groupID())) {
+            if (field.isAnnotationPresent(StringElement.class)) {
+                final StringElement element = field.getAnnotation(StringElement.class);
+                if (!id.equals(element.groupID())) {
                     continue;
                 }
                 configMenu.add(new InteractiveStringEntry(i, field, object, element));
+                continue;
+            }
+
+            if (field.isAnnotationPresent(ToggleElement.class)) {
+                final ToggleElement element = field.getAnnotation(ToggleElement.class);
+                if (!id.equals(element.groupID())) {
+                    continue;
+                }
+                configMenu.add(new InteractiveToggleEntry(i, field, object, element));
+                continue;
             }
 
         }

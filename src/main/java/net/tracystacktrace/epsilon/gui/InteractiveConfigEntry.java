@@ -22,7 +22,7 @@ public abstract class InteractiveConfigEntry<T> {
 
     public abstract void initGui(GuiEpsilonConfig config, int x, int y, int w);
 
-    public abstract void render(int mouseX, int mouseY);
+    public abstract void render(float mouseX, float mouseY);
 
     public abstract void finish();
 

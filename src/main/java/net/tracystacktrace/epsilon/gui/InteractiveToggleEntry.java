@@ -14,6 +14,9 @@ public class InteractiveToggleEntry extends InteractiveConfigEntry<Boolean> impl
     protected final String title;
     protected final EnumToggleType toggleType;
 
+    protected GuiButton button;
+    protected boolean value;
+
     public InteractiveToggleEntry(
             int id,
             @NotNull Field field,
@@ -25,9 +28,6 @@ public class InteractiveToggleEntry extends InteractiveConfigEntry<Boolean> impl
         this.toggleType = element.type();
     }
 
-    protected GuiButton button;
-    protected boolean value;
-
     @Override
     public void initGui(GuiEpsilonConfig config, int x, int y, int w) {
         this.value = getValue();
@@ -37,7 +37,7 @@ public class InteractiveToggleEntry extends InteractiveConfigEntry<Boolean> impl
     }
 
     @Override
-    public void render(int mouseX, int mouseY) {
+    public void render(float mouseX, float mouseY) {
         //no need
     }
 
