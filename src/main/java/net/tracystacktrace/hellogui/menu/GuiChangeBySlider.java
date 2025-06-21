@@ -47,10 +47,11 @@ public class GuiChangeBySlider extends GuiScreen implements ISliderUpdate {
         final int offsetX = this.width / 2 - 100;
         final int offsetY = this.height / 2 - 25;
 
-        this.slider = new SliderCompact(0, offsetX, offsetY, 200, 20, "", normalization.normalize(this.value));
+        this.slider = new SliderCompact(0, offsetX, offsetY, 200, 20, this.sliderTitle, normalization.normalize(this.value));
+        this.slider.setTrigger(this);
         this.controlList.add(this.slider);
 
-        this.controlList.add(new GuiButton(1, offsetX, offsetY + 30, 95, 20, Translation.quickTranslate("bootifulblockoutline.reset")));
+        this.controlList.add(new GuiButton(1, offsetX, offsetY + 30, 95, 20, Translation.quickTranslate("hellogui.reset")));
         this.controlList.add(new GuiButton(2, offsetX + 105, offsetY + 30, 95, 20, Translation.quickTranslate("gui.done")));
 
         this.onSliderChanged(0);

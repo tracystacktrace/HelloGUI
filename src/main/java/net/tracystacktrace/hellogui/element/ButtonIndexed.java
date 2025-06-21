@@ -5,6 +5,7 @@ import net.minecraft.client.gui.GuiButton;
 public class ButtonIndexed extends GuiButton {
 
     protected final String[] options;
+
     protected int index;
 
     public ButtonIndexed(int _id, int x, int y, int w, int h, String[] options) {
@@ -39,4 +40,5 @@ public class ButtonIndexed extends GuiButton {
     public int getCurrentIndex() {
         return this.index;
     }
+
 }

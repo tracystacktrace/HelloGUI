@@ -4,6 +4,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.tracystacktrace.hellogui.Translation;
 
 public class ButtonToggle extends GuiButton {
+
     public final String labelOff;
     public final String labelOn;
 
@@ -51,4 +52,5 @@ public class ButtonToggle extends GuiButton {
     public boolean getValue() {
         return this.value;
     }
+
 }
