@@ -52,7 +52,7 @@ public class GuiChangeBySlider extends GuiScreen implements ISliderUpdate {
         this.controlList.add(this.slider);
 
         this.controlList.add(new GuiButton(1, offsetX, offsetY + 30, 95, 20, Translation.quickTranslate("hellogui.reset")));
-        this.controlList.add(new GuiButton(2, offsetX + 105, offsetY + 30, 95, 20, Translation.quickTranslate("gui.done")));
+        this.controlList.add(new GuiButton(2, offsetX + 105, offsetY + 30, 95, 20, Translation.quickTranslate("hellogui.save_exit")));
 
         this.onSliderChanged(0);
     }

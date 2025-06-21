@@ -4,7 +4,8 @@ hellogui.off=§cOff
 hellogui.yes=§aYes
 hellogui.no=§cNo
 
-hellogui.done=Save & Close
+hellogui.done=§cSave§r & Close
+hellogui.save_exit=§cSave§r & Exit
 hellogui.reset=Reset
 hellogui.cancel=Cancel
 
