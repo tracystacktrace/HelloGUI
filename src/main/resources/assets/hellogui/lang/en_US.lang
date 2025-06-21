@@ -7,3 +7,8 @@ hellogui.no=§cNo
 hellogui.done=Save & Close
 hellogui.reset=Reset
 hellogui.cancel=Cancel
+
+hellogui.red=Red: %s
+hellogui.green=Green: %s
+hellogui.blue=Blue: %s
+hellogui.alpha=Alpha: %s

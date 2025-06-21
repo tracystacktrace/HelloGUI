@@ -47,14 +47,28 @@ public final class Translation {
      * A safe wrap for {@link StringTranslate#translateKey(String)}, allows to get a value from ".lang" file and put another string via {@link String#format(String, Object...)}.
      *
      * @param input lang key string
-     * @param first another value
+     * @param i     another value
      * @return translation result from ".lang" file (if exists), or key lang string (if not found)
      */
-    public static @NotNull String quickTranslate(@Nullable String input, int first) {
+    public static @NotNull String quickTranslate(@Nullable String input, int i) {
         if (input == null || input.isEmpty()) {
             return "";
         }
-        return String.format(StringTranslate.getInstance().translateKey(input), first);
+        return String.format(StringTranslate.getInstance().translateKey(input), i);
+    }
+
+    /**
+     * A safe wrap for {@link StringTranslate#translateKey(String)}, allows to get a value from ".lang" file and put another string via {@link String#format(String, Object...)}.
+     *
+     * @param input lang key string
+     * @param f     another value
+     * @return translation result from ".lang" file (if exists), or key lang string (if not found)
+     */
+    public static @NotNull String quickTranslate(@Nullable String input, float f) {
+        if (input == null || input.isEmpty()) {
+            return "";
+        }
+        return String.format(StringTranslate.getInstance().translateKey(input), f);
     }
 
 }
