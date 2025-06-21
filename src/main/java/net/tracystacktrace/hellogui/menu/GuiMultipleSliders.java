@@ -15,7 +15,7 @@ public class GuiMultipleSliders extends GuiScreen implements ISliderUpdate {
 
     protected final String menuTitle;
     protected final String[] sliderNames;
-    protected final float[] initialValue;
+    protected final float[] initialValues;
     protected final FloatNormalization normalization;
     protected final Consumer<float[]> saveHandler;
 
@@ -27,20 +27,20 @@ public class GuiMultipleSliders extends GuiScreen implements ISliderUpdate {
             @Nullable GuiScreen parentScreen,
             @NotNull String menuTitle,
             @NotNull String[] slidersNames,
-            float[] initial,
+            float[] initialValues,
             @NotNull FloatNormalization normalization,
             @NotNull Consumer<float[]> saveHandler
     ) {
         this.parentScreen = parentScreen;
         this.menuTitle = Translation.quickTranslate(menuTitle);
         this.sliderNames = slidersNames;
-        this.initialValue = initial;
+        this.initialValues = initialValues;
         this.normalization = normalization;
         this.saveHandler = saveHandler;
 
-        this.value = new float[initial.length];
-        for(int i = 0; i < initial.length; i++) {
-            this.value[i] = initial.length;
+        this.value = new float[initialValues.length];
+        for(int i = 0; i < initialValues.length; i++) {
+            this.value[i] = initialValues.length;
         }
     }
 
@@ -49,9 +49,10 @@ public class GuiMultipleSliders extends GuiScreen implements ISliderUpdate {
         this.controlList.clear();
 
         final int offsetX = this.width / 2 - 100;
-        final int offsetY = this.height / 2 - (30 + (20 * this.value.length) + (5 * (this.value.length - 1))) / 2;
+        final int offsetY = this.height / 2 - (30 + (20 * this.initialValues.length) + (5 * (this.initialValues.length - 1))) / 2;
 
-        for(int i = 0; i < sliders.length; i++) {
+        this.sliders = new SliderCompact[this.initialValues.length];
+        for(int i = 0; i < this.initialValues.length; i++) {
             this.sliders[i] = new SliderCompact(i, offsetX, offsetY + (25 * i), 200, 20, this.sliderNames[i], normalization.normalize(this.value[i]));
             this.sliders[i].setTrigger(this);
             this.controlList.add(sliders[i]);
@@ -68,9 +69,9 @@ public class GuiMultipleSliders extends GuiScreen implements ISliderUpdate {
         if (guiButton.enabled) {
             //reset values
             if (guiButton.id == -1) {
-                for(int i = 0; i < sliders.length; i++) {
-                    this.value[i] = initialValue[i];
-                    this.sliders[i].sliderValue = normalization.normalize(this.initialValue[i]);
+                for(int i = 0; i < initialValues.length; i++) {
+                    this.value[i] = initialValues[i];
+                    this.sliders[i].sliderValue = normalization.normalize(this.initialValues[i]);
                     this.sliders[i].displayString = String.format(this.sliderNames[i], this.value[i]);
                 }
                 return;
@@ -98,7 +99,7 @@ public class GuiMultipleSliders extends GuiScreen implements ISliderUpdate {
     @Override
     public void onSliderChanged(int slider_id) {
         if(slider_id == -1) {
-            for(int i = 0; i < this.value.length; i++) {
+            for(int i = 0; i < this.initialValues.length; i++) {
                 this.value[i] = normalization.denormalize(this.sliders[i].sliderValue);
                 this.sliders[i].displayString = String.format(this.sliderNames[i], this.value[i]);
             }
@@ -106,7 +107,7 @@ public class GuiMultipleSliders extends GuiScreen implements ISliderUpdate {
             return;
         }
 
-        if(slider_id >= 0 && slider_id < this.value.length) {
+        if(slider_id >= 0 && slider_id < this.initialValues.length) {
             this.value[slider_id] = normalization.denormalize(this.sliders[slider_id].sliderValue);
             this.sliders[slider_id].displayString = String.format(this.sliderNames[slider_id], this.value[slider_id]);
         }
