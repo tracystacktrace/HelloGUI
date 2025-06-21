@@ -1,5 +1,8 @@
 package net.tracystacktrace.hellogui;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 public final class NumberFeatures {
 
     public static boolean isValidTextManipulationKey(int eventKey) {
@@ -23,7 +26,7 @@ public final class NumberFeatures {
         return true;
     }
 
-    public static String fixStringARGB(String damaged) {
+    public static @NotNull String fixStringARGB(@NotNull String damaged) {
         if (damaged.length() == 8) {
             return damaged;
         }
@@ -35,7 +38,7 @@ public final class NumberFeatures {
         return damaged + "0".repeat(8 - damaged.length());
     }
 
-    public static short parseColorShort(final String s) {
+    public static short parseColorShort(final @Nullable String s) {
         if (s == null || s.isEmpty()) return 0;
         return (short) Math.max(0, Math.min(255, Integer.parseInt(s)));
     }

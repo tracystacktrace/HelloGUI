@@ -5,8 +5,8 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiSlider;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.common.util.i18n.StringTranslate;
-import net.tracystacktrace.hellogui.ISliderUpdate;
 import net.tracystacktrace.hellogui.NumberFeatures;
+import net.tracystacktrace.hellogui.apis.ISliderUpdate;
 import net.tracystacktrace.hellogui.element.SliderCompact;
 import org.lwjgl.input.Keyboard;
 

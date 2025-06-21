@@ -79,7 +79,7 @@ public class GuiInputString extends GuiScreen {
         }
 
         if (this.inputTextField.isFocused) {
-            if (checkInput == null || checkInput.check(eventChar, eventKey) || NumberFeatures.isValidTextManipulationKey(eventKey)) {
+            if (NumberFeatures.isValidTextManipulationKey(eventKey) || checkInput == null || checkInput.check(eventChar, eventKey)) {
                 this.inputTextField.textboxKeyTyped(eventChar, eventKey);
                 ((GuiButton) this.controlList.get(1)).enabled = this.inputTextField.getText().length() >= this.minLength;
             }

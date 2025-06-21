@@ -1,4 +1,4 @@
-package net.tracystacktrace.hellogui;
+package net.tracystacktrace.hellogui.apis;
 
 public interface ISliderUpdate {
 

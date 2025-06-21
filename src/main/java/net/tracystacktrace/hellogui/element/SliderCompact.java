@@ -2,8 +2,8 @@ package net.tracystacktrace.hellogui.element;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiSlider;
-import net.tracystacktrace.hellogui.ISliderUpdate;
 import net.tracystacktrace.hellogui.Translation;
+import net.tracystacktrace.hellogui.apis.ISliderUpdate;
 
 public class SliderCompact extends GuiSlider {
 
