@@ -48,8 +48,10 @@ public class GuiMultipleSliders extends GuiScreen implements ISliderUpdate {
     public void initGui() {
         this.controlList.clear();
 
+        final int jump1 = (20 * this.initialValues.length) + (5 * (this.initialValues.length - 1));
+
         final int offsetX = this.width / 2 - 100;
-        final int offsetY = this.height / 2 - (30 + (20 * this.initialValues.length) + (5 * (this.initialValues.length - 1))) / 2;
+        final int offsetY = this.height / 2 - (30 + jump1) / 2;
 
         this.sliders = new SliderCompact[this.initialValues.length];
         for(int i = 0; i < this.initialValues.length; i++) {
@@ -58,8 +60,8 @@ public class GuiMultipleSliders extends GuiScreen implements ISliderUpdate {
             this.controlList.add(sliders[i]);
         }
 
-        this.controlList.add(new GuiButton(-1, offsetX, offsetY + 30, 95, 20, Translation.quickTranslate("hellogui.reset")));
-        this.controlList.add(new GuiButton(-2, offsetX + 105, offsetY + 30, 95, 20, Translation.quickTranslate("hellogui.save_exit")));
+        this.controlList.add(new GuiButton(-1, offsetX, offsetY + 10 + jump1, 95, 20, Translation.quickTranslate("hellogui.reset")));
+        this.controlList.add(new GuiButton(-2, offsetX + 105, offsetY + 10 + jump1, 95, 20, Translation.quickTranslate("hellogui.save_exit")));
 
         this.onSliderChanged(-1);
     }
