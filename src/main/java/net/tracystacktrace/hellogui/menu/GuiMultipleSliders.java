@@ -39,9 +39,7 @@ public class GuiMultipleSliders extends GuiScreen implements ISliderUpdate {
         this.saveHandler = saveHandler;
 
         this.value = new float[initialValues.length];
-        for(int i = 0; i < initialValues.length; i++) {
-            this.value[i] = initialValues.length;
-        }
+        System.arraycopy(initialValues, 0, this.value, 0, initialValues.length);
     }
 
     @Override

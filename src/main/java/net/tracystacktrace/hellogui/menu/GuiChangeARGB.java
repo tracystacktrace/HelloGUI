@@ -6,6 +6,7 @@ import net.minecraft.client.gui.GuiSlider;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.common.util.i18n.StringTranslate;
 import net.tracystacktrace.hellogui.NumberFeatures;
+import net.tracystacktrace.hellogui.Translation;
 import net.tracystacktrace.hellogui.apis.ISliderUpdate;
 import net.tracystacktrace.hellogui.element.SliderCompact;
 import org.lwjgl.input.Keyboard;
@@ -44,7 +45,7 @@ public class GuiChangeARGB extends GuiScreen implements ISliderUpdate {
 
     public GuiChangeARGB(GuiScreen parentScreen, String title, int argb, IntConsumer saveHandler) {
         this.parentScreen = parentScreen;
-        this.screenTitle = StringTranslate.getInstance().translateKey(title);
+        this.screenTitle = Translation.quickTranslate(title);
         this.saveHandler = saveHandler;
         this.alpha = (short) ((argb >> 24) & 0xFF);
         this.red = (short) ((argb >> 16) & 0xFF);
