@@ -4,6 +4,8 @@ import net.minecraft.common.util.i18n.StringTranslate;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.IllegalFormatException;
+
 /**
  * A very simple access to {@link StringTranslate}'s functions in a very-very static manner.
  *
@@ -37,10 +39,14 @@ public final class Translation {
         if (input == null || input.isEmpty()) {
             return "";
         }
-        return String.format(
-                StringTranslate.getInstance().translateKey(input),
-                StringTranslate.getInstance().translateKey(string)
-        );
+        try {
+            return String.format(
+                    StringTranslate.getInstance().translateKey(input),
+                    StringTranslate.getInstance().translateKey(string)
+            );
+        } catch (IllegalFormatException e) {
+            return "";
+        }
     }
 
     /**
@@ -54,7 +60,11 @@ public final class Translation {
         if (input == null || input.isEmpty()) {
             return "";
         }
-        return String.format(StringTranslate.getInstance().translateKey(input), i);
+        try {
+            return String.format(StringTranslate.getInstance().translateKey(input), i);
+        } catch (IllegalFormatException e) {
+            return "";
+        }
     }
 
     /**
@@ -68,7 +78,11 @@ public final class Translation {
         if (input == null || input.isEmpty()) {
             return "";
         }
-        return String.format(StringTranslate.getInstance().translateKey(input), f);
+        try {
+            return String.format(StringTranslate.getInstance().translateKey(input), f);
+        } catch (IllegalFormatException e) {
+            return "";
+        }
     }
 
 }

@@ -124,27 +124,27 @@ public class GuiChangeARGB extends GuiScreen implements ISliderUpdate {
 
     @Override
     public void keyTyped(char eventChar, int eventKey) {
-        if (this.redIntTextField.isFocused && NumberFeatures.isValidInputDigit(eventChar, eventKey) && NumberFeatures.isUnsignedByteRange(this.red, eventChar)) {
+        if (this.redIntTextField.isFocused && NumberFeatures.isValidDigit(eventChar, eventKey) && NumberFeatures.within256Range(this.red, eventChar)) {
             this.redIntTextField.textboxKeyTyped(eventChar, eventKey);
             this.onUpdateFromTextFields();
         }
 
-        if (this.greenIntTextField.isFocused && NumberFeatures.isValidInputDigit(eventChar, eventKey) && NumberFeatures.isUnsignedByteRange(this.green, eventChar)) {
+        if (this.greenIntTextField.isFocused && NumberFeatures.isValidDigit(eventChar, eventKey) && NumberFeatures.within256Range(this.green, eventChar)) {
             this.greenIntTextField.textboxKeyTyped(eventChar, eventKey);
             this.onUpdateFromTextFields();
         }
 
-        if (this.blueIntTextField.isFocused && NumberFeatures.isValidInputDigit(eventChar, eventKey) && NumberFeatures.isUnsignedByteRange(this.blue, eventChar)) {
+        if (this.blueIntTextField.isFocused && NumberFeatures.isValidDigit(eventChar, eventKey) && NumberFeatures.within256Range(this.blue, eventChar)) {
             this.blueIntTextField.textboxKeyTyped(eventChar, eventKey);
             this.onUpdateFromTextFields();
         }
 
-        if (this.alphaIntTextField.isFocused && NumberFeatures.isValidInputDigit(eventChar, eventKey) && NumberFeatures.isUnsignedByteRange(this.alpha, eventChar)) {
+        if (this.alphaIntTextField.isFocused && NumberFeatures.isValidDigit(eventChar, eventKey) && NumberFeatures.within256Range(this.alpha, eventChar)) {
             this.alphaIntTextField.textboxKeyTyped(eventChar, eventKey);
             this.onUpdateFromTextFields();
         }
 
-        if (this.hexTextField.isFocused && NumberFeatures.isValidInputHEX(eventChar, eventKey)) {
+        if (this.hexTextField.isFocused && NumberFeatures.isValidHEX(eventChar, eventKey)) {
             this.hexTextField.textboxKeyTyped(eventChar, eventKey);
             this.onUpdateFromHexField();
         }

@@ -5,22 +5,22 @@ import org.jetbrains.annotations.Nullable;
 
 public final class NumberFeatures {
 
-    public static boolean isValidTextManipulationKey(int eventKey) {
+    public static boolean isValidCursorKey(int eventKey) {
         return eventKey == 14 || eventKey == 203 || eventKey == 205; //left, right and backspace
     }
 
-    public static boolean isValidInputDigit(char eventChar, int eventKey) {
-        return Character.isDigit(eventChar) || isValidTextManipulationKey(eventKey);
+    public static boolean isValidDigit(char eventChar, int eventKey) {
+        return Character.isDigit(eventChar) || isValidCursorKey(eventKey);
     }
 
-    public static boolean isValidInputHEX(char c, int eventKey) {
+    public static boolean isValidHEX(char c, int eventKey) {
         return (c >= '0' && c <= '9') ||
                 (c >= 'a' && c <= 'f') ||
                 (c >= 'A' && c <= 'F') ||
-                isValidTextManipulationKey(eventKey); //left, right and backspace
+                isValidCursorKey(eventKey); //left, right and backspace
     }
 
-    public static boolean isUnsignedByteRange(short value, char input) {
+    public static boolean within256Range(short value, char input) {
         if (Character.isDigit(input))
             return Short.parseShort(String.valueOf(value) + input) < 256;
         return true;

@@ -52,7 +52,7 @@ public class GuiMultipleSliders extends GuiScreen implements ISliderUpdate {
         final int offsetY = this.height / 2 - (30 + jump1) / 2;
 
         this.sliders = new SliderCompact[this.initialValues.length];
-        for(int i = 0; i < this.initialValues.length; i++) {
+        for (int i = 0; i < this.initialValues.length; i++) {
             this.sliders[i] = new SliderCompact(i, offsetX, offsetY + (25 * i), 200, 20, this.sliderNames[i], normalization.normalize(this.value[i]));
             this.sliders[i].setTrigger(this);
             this.controlList.add(sliders[i]);
@@ -69,7 +69,7 @@ public class GuiMultipleSliders extends GuiScreen implements ISliderUpdate {
         if (guiButton.enabled) {
             //reset values
             if (guiButton.id == -1) {
-                for(int i = 0; i < initialValues.length; i++) {
+                for (int i = 0; i < initialValues.length; i++) {
                     this.value[i] = initialValues[i];
                     this.sliders[i].sliderValue = normalization.normalize(this.initialValues[i]);
                     this.sliders[i].displayString = String.format(this.sliderNames[i], this.value[i]);
@@ -98,8 +98,8 @@ public class GuiMultipleSliders extends GuiScreen implements ISliderUpdate {
 
     @Override
     public void onSliderChanged(int slider_id) {
-        if(slider_id == -1) {
-            for(int i = 0; i < this.initialValues.length; i++) {
+        if (slider_id == -1) {
+            for (int i = 0; i < this.initialValues.length; i++) {
                 this.value[i] = normalization.denormalize(this.sliders[i].sliderValue);
                 this.sliders[i].displayString = String.format(this.sliderNames[i], this.value[i]);
             }
@@ -107,7 +107,7 @@ public class GuiMultipleSliders extends GuiScreen implements ISliderUpdate {
             return;
         }
 
-        if(slider_id >= 0 && slider_id < this.initialValues.length) {
+        if (slider_id >= 0 && slider_id < this.initialValues.length) {
             this.value[slider_id] = normalization.denormalize(this.sliders[slider_id].sliderValue);
             this.sliders[slider_id].displayString = String.format(this.sliderNames[slider_id], this.value[slider_id]);
         }
