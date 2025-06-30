@@ -8,14 +8,14 @@ import net.tracystacktrace.hellogui.func.AgreementResponse;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class GuiAgreementPage extends GuiScreen {
+public class GuiCustomYesNo extends GuiScreen {
 
     protected final String[] message;
     protected final String answerOk;
     protected final String answerDeny;
     protected final AgreementResponse trigger;
 
-    public GuiAgreementPage(
+    public GuiCustomYesNo(
             @Nullable GuiScreen parentScreen,
             @NotNull String[] message,
             @NotNull String answerOk,
@@ -29,7 +29,7 @@ public class GuiAgreementPage extends GuiScreen {
         this.trigger = responseTrigger != null ? responseTrigger : (notUsed, ps) -> Minecraft.getInstance().displayGuiScreen(ps);
     }
 
-    public GuiAgreementPage(
+    public GuiCustomYesNo(
             @Nullable GuiScreen parentScreen,
             @NotNull String message,
             @NotNull String answerOk,
